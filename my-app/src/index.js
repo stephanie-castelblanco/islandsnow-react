@@ -1,12 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client'; // Updated import for ReactDOM
+import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
-import { Container, Nav, Navbar, NavDropdown, Row, Col, Dropdown, Button } from 'react-bootstrap';
+import { Button, Col, Container, Image, Nav, Navbar, NavDropdown, Row } from 'react-bootstrap';
 import { Cart, Facebook, HouseFill, Instagram, PersonFill, Pinterest, Search, Twitter } from 'react-bootstrap-icons';
-import Image from 'react-bootstrap/Image';
-import logo from './experience-islandsnow-bootstrap-logo.png';
-import fullWidthImage from './experience-islandsnow-bootstrap-main.png';
 
 const TopMenu = () => (
     <Navbar bg="light" expand="lg">
@@ -22,6 +19,7 @@ const TopMenu = () => (
           <Nav.Link><Search/> </Nav.Link>
           <Nav.Link><PersonFill/> </Nav.Link>
           <NavDropdown title={<Cart/>}>
+            <NavDropdown.Item></NavDropdown.Item>
             <NavDropdown.ItemText>Your cart is currently empty.</NavDropdown.ItemText>
           </NavDropdown>
         </Nav>
@@ -29,79 +27,55 @@ const TopMenu = () => (
     </Navbar>
 );
 
-
-const IslandSnowLogo = () => (
-    <Row>
-      <Col>
-        <Image src={logo} alt="Island Snow Logo" fluid rounded className="mx-auto d-block py-3" />
+const Logo = () => (
+    <Row className="justify-content-md-center py-3">
+      <Col md="auto">
+        <Image fluid rounded mx="auto" d="block" src="experience-islandsnow-bootstrap-logo.png" alt="Island Snow Hawaii Logo"/>
       </Col>
     </Row>
 );
 
-const MiddleMenu = () => (
-    <Container>
-      <Row className="justify-content-center pt-4">
-        <Col xs={1}>
-          <Dropdown>
-            <Dropdown.Toggle variant="white"><strong>MEN</strong></Dropdown.Toggle>
-          </Dropdown>
-        </Col>
-
-        <Col xs={1}>
-          <Dropdown>
-            <Dropdown.Toggle variant="white"><strong>WOMEN</strong></Dropdown.Toggle>
-          </Dropdown>
-        </Col>
-
-        <Col xs={1} className="mx-3"> {/* Adjusted margin here */}
-          <Dropdown>
-            <Dropdown.Toggle variant="white"><strong>KIDS</strong></Dropdown.Toggle>
-          </Dropdown>
-        </Col>
-
-          <Col xs={1} className="mx-3"> {/* Adjusted margin here */}
-            <Dropdown>
-            <Dropdown.Toggle variant="white"><strong>BRANDS</strong></Dropdown.Toggle>
-          </Dropdown>
-        </Col>
-
-        <Col xs={1} className="d-flex justify-content-center align-items-center">
-          <strong>SEARCH</strong>
-        </Col>
-      </Row>
-    </Container>
+const SecondMenu = () => (
+    <Nav className="justify-content-md-center py-3">
+      <NavDropdown title={"MEN"}/>
+      <NavDropdown title={"WOMEN"}/>
+      <NavDropdown title={"KIDS"}/>
+      <NavDropdown title={"BRANDS"}/>
+      <Nav.Link>SEARCH</Nav.Link>
+    </Nav>
 );
 
-
-function FullWidthImage() {
-  return <Image src={fullWidthImage} fluid />;
-}
+const MainImage = () => (
+    <Row className="justify-content-md-center pt-3">
+      <Col md="auto">
+        <Image fluid src="experience-islandsnow-bootstrap-main.png"/>
+      </Col>
+    </Row>
+);
 
 const FooterMenu = () => (
-    <footer>
+    <footer className="py-3">
       <Container>
-        <Row className="py-3">
+        <Row>
           <Col>
             NAVIGATION
-            <hr />
-            <div>About Us</div>
-            <div>Employment</div>
-            <div>Videos</div>
+            <hr/>
+            <p>About Us</p>
+            <p>Employment</p>
+            <p>Videos</p>
           </Col>
-
           <Col>
             MAIN MENU
-            <hr />
-            <div>Men</div>
-            <div>Women</div>
-            <div>Kids</div>
+            <hr/>
+            <p>Men</p>
+            <p>Women</p>
+            <p>Kids</p>
           </Col>
-
           <Col>
             CONNECT
-            <hr />
-            <div>Sign up for the latest updates</div>
-            <input type="text" placeholder="Enter Email Address" />
+            <hr/>
+            <p>Sign up for the latest updates</p>
+            <input type="text" placeholder="Enter Email Address"/>
             <Button variant="dark">Join</Button>
           </Col>
         </Row>
@@ -110,14 +84,13 @@ const FooterMenu = () => (
 );
 
 const IslandSnow = () => (
-    <Container>
+    <>
       <TopMenu/>
-      <IslandSnowLogo/>
-      <MiddleMenu/>
-      <FullWidthImage/>
+      <Logo/>
+      <SecondMenu/>
+      <MainImage/>
       <FooterMenu/>
-    </Container>
+    </>
 );
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<IslandSnow />);
+ReactDOM.render(<IslandSnow/>, document.getElementById('root'));

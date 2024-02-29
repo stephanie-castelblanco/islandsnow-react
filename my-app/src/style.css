@@ -1,8 +1,12 @@
+.nav {
+  --bs-nav-link-color: black;
+  --bs-nav-link-font-weight: bold;
+}
 
 footer {
   background-color: #292929;
   color: white;
-  padding: 15px;
 }
+
 
 
